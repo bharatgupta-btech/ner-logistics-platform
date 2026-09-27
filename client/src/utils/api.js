@@ -49,6 +49,18 @@ export const getAnalytics = async () => {
   }
 };
 
+export const getAlerts = async () => {
+  try {
+    const res = await api.get('/alerts');
+    return res.data;
+  } catch (err) {
+    console.error('Error fetching alerts:', err);
+    return [];
+  }
+};
+
+export const fetchAlerts = getAlerts;
+
 export const createAlert = async (data) => {
   try {
     const res = await api.post('/alerts', data);
@@ -56,16 +68,6 @@ export const createAlert = async (data) => {
   } catch (err) {
     console.error('Error creating alert:', err);
     throw err;
-  }
-};
-
-export const fetchAlerts = async () => {
-  try {
-    const res = await api.get('/alerts');
-    return res.data;
-  } catch (err) {
-    console.error('Error fetching alerts:', err);
-    return [];
   }
 };
 
