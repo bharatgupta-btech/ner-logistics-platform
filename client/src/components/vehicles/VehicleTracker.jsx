@@ -12,7 +12,7 @@ import {
   RefreshCw,
   Crosshair
 } from 'lucide-react';
-import { getVehicles } from '../../utils/api';
+import { getVehicles, MOCK_VEHICLES } from '../../utils/api';
 import { useSocket } from '../../context/SocketContext';
 import VehicleList from './VehicleList';
 import VehicleDetail from './VehicleDetail';
@@ -57,15 +57,15 @@ const VehicleTracker = () => {
     try {
       setLoading(true);
       const res = await getVehicles();
-      if (res.data?.success) {
-        const list = res.data.data || [];
-        setVehicles(list);
-        if (list.length > 0 && !selectedVehicle) {
-          setSelectedVehicle(list[0]);
-        }
+      const list = (res.data?.data && res.data.data.length > 0) ? res.data.data : MOCK_VEHICLES;
+      setVehicles(list);
+      if (list.length > 0 && !selectedVehicle) {
+        setSelectedVehicle(list[0]);
       }
     } catch (err) {
       console.error('Failed to load fleet vehicles:', err);
+      setVehicles(MOCK_VEHICLES);
+      if (!selectedVehicle) setSelectedVehicle(MOCK_VEHICLES[0]);
     } finally {
       setLoading(false);
     }
