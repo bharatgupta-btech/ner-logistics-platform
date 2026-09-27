@@ -305,7 +305,7 @@ const Header = () => {
           <button 
             onClick={() => setIsSosOpen(true)}
             className="bg-red-600 hover:bg-red-700 active:bg-red-800 text-white px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center space-x-2 transition-all shadow-md shadow-red-500/20 transform hover:scale-[1.02] cursor-pointer"
-            title="Open Emergency SOS Police & Family Dialing Console"
+            title="Open Emergency SOS Police &amp; Family Dialing Console"
           >
             <AlertTriangle size={17} className="animate-pulse" />
             <span className="tracking-wide">Emergency SOS</span>
