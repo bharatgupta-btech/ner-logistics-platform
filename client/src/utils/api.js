@@ -86,7 +86,7 @@ export const createAlert = async (data) => {
     const res = await api.post('/alerts', data);
     return res.data;
   } catch (err) {
-    const newAlert = { id: A-\, ...data, timestamp: new Date().toISOString() };
+    const newAlert = Object.assign({ id: 'A-' + Date.now(), timestamp: new Date().toISOString() }, data);
     MOCK_ALERTS.unshift(newAlert);
     return newAlert;
   }
